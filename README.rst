@@ -22,7 +22,7 @@ Introduction
     :target: https://github.com/psf/black
     :alt: Code Style: Black
 
-CircuitPython framebuf driver for HX1230 96x68 monochrome LCD displays using SPI.
+CircuitPython framebuf driver for HX1230 96x68 monochrome LCD displays using SPI. Adapted from [mcauser/micropython-hx1230](https://github.com/mcauser/micropython-hx1230), check out their repo for more information on the hardware.
 
 
 Dependencies
