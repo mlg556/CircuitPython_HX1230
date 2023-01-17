@@ -88,6 +88,7 @@ Usage Example
 =============
 
 .. code-block:: python
+    
     # simple example printing hello world
     # to be able to print text, download the font file font5x8.bin
     # from https://github.com/adafruit/Adafruit_CircuitPython_framebuf/blob/main/examples/font5x8.bin
