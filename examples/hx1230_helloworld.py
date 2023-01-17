@@ -9,7 +9,6 @@
 # and put it in the same directory as your code
 
 # import required CircuitPython libraries
-import time
 import board
 import busio
 import digitalio
