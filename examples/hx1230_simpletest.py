@@ -6,6 +6,10 @@
 # simple example showing the capabilities of HX1230 with framebuffer
 # adapted from https://github.com/adafruit/Adafruit_CircuitPython_SSD1306/blob/main/examples/ssd1306_framebuftest.py
 
+# to be able to print text, download the font file font5x8.bin
+# from https://github.com/adafruit/Adafruit_CircuitPython_framebuf/blob/main/examples/font5x8.bin
+# and put it in the same directory as your code
+
 # import required CircuitPython libraries
 import time
 import board

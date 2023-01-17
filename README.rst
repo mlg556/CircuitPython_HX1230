@@ -36,12 +36,7 @@ Please ensure all dependencies are available on the CircuitPython filesystem.
 This is easily achieved by downloading
 `the Adafruit library and driver bundle <https://circuitpython.org/libraries>`_
 or individual libraries can be installed using
-`circup <https://github.com/adafruit/circup>`_.Installing from PyPI
-=====================
-.. note:: This library is not available on PyPI yet. Install documentation is included
-   as a standard element. Stay tuned for PyPI availability!
-
-.. todo:: Remove the above note if PyPI version is/will be available at time of release.
+`circup <https://github.com/adafruit/circup>`_.
 
 On supported GNU/Linux systems like the Raspberry Pi, you can install the driver locally `from
 PyPI <https://pypi.org/project/circuitpython-hx1230/>`_.
@@ -92,8 +87,37 @@ Or the following command to update an existing version:
 Usage Example
 =============
 
-.. todo:: Add a quick, simple example. It and other examples should live in the
-examples folder and be included in docs/examples.rst.
+.. code-block:: python
+    # simple example printing hello world
+    # to be able to print text, download the font file font5x8.bin
+    # from https://github.com/adafruit/Adafruit_CircuitPython_framebuf/blob/main/examples/font5x8.bin
+    # and put it in the same directory as your code
+
+    # import required CircuitPython libraries
+    import time
+    import board
+    import busio
+    import digitalio
+
+    # import the HX1230 module
+    import hx1230
+
+    # create the SPI interface, this part depends on your specific board
+    # for Raspberry Pico W using SPI0:
+    spi = busio.SPI(clock=board.GP18, MOSI=board.GP19)
+    # choose a CS (chip select) pin
+    cs = digitalio.DigitalInOut(board.GP17)  # Chip select
+    # choose a reset pin, this part is optional since HX1230 has sofware reset
+    reset = digitalio.DigitalInOut(board.GP20)
+    # create the HX1230 class
+    display = hx1230.HX1230(spi=spi, cs=cs, reset=reset)
+
+    # clear the display
+    display.clear()
+    # print hello world
+    display.text("hello world", 0, 0, 1)
+    # don't forget to call show!
+    display.show()
 
 Documentation
 =============
