@@ -131,7 +131,8 @@ class HX1230(framebuf.FrameBuffer):
         self.contrast(31)  # maximum contrast
         self.invert(False)
         self.test(False)
-        self.orientation(False, False)  # no rotation
+        self.flip_horizontal(False)  # no rotation
+        self.flip_vertical(False)
         self.display(True)  # switch on
         self.start_line(0)  # set line to 0
         self.clear()  # clear
@@ -169,10 +170,14 @@ class HX1230(framebuf.FrameBuffer):
         """Display test pattern"""
         self.write_command(DISPLAY_TEST if on else DISPLAY_NORMAL)
 
-    def orientation(self, seg_remap=False, com_remap=False) -> None:
-        """Set the orientation, to rotate 180, set both to True."""
-        self.write_command(SEG_REMAP if seg_remap else SEG_NORMAL)
-        self.write_command(COM_REMAP if com_remap else COM_NORMAL)
+    def flip_horizontal(self, flip: bool) -> None:
+        """Flips the screen horizontally, call with False to flip, True to reset"""
+        self.write_command(COM_REMAP if flip else COM_NORMAL)
+
+    def flip_vertical(self, flip: bool) -> None:
+        """Flips the screen vertically, call with False to flip, True to reset"""
+        # doesn't work for some reason...
+        self.write_command(SEG_REMAP if flip else SEG_NORMAL)
 
     def position(self, x: int, y: int) -> None:
         """Position the cursor, x between 0~95 and y between 0~9"""
